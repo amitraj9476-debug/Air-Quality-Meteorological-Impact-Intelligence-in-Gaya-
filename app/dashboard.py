@@ -98,6 +98,7 @@ def main():
     - **City**: Gaya
     - **Station**: Kareemganj (BSPCB)
     - **Authority**: CPCB
+    - **Draft/Managed By**: Amit Raj
     """)
     st.sidebar.divider()
     
