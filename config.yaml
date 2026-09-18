@@ -1,0 +1,53 @@
+raw_data_path: "Research Project.xlsx"
+processed_data_path: "data/processed_air_quality.csv"
+model_dir: "models"
+best_model_path: "models/pm25_model.joblib"
+aqi_model_path: "models/aqi_model.joblib"
+scaler_path: "models/scaler.joblib"
+features_path: "models/feature_names.joblib"
+
+station_metadata:
+  organization: "Central Pollution Control Board (CPCB)"
+  monitoring_type: "Continuous Ambient Air Quality Monitoring (CAAQM)"
+  state: "Bihar"
+  city: "Gaya"
+  station: "Kareemganj, Gaya - BSPCB"
+  averaging_period: "1 Hour (1H)"
+  period: "Jan 01, 2025 - Dec 31, 2025"
+
+datetime_columns:
+  from_date: "From Date"
+  to_date: "To Date"
+
+pollutant_columns:
+  - "PM2.5"
+  - "PM10"
+  - "NO2"
+  - "CO"
+  - "OZONE"
+
+meteorological_columns:
+  - "RH"   # Relative Humidity (%)
+  - "WD"   # Wind Direction (Degrees)
+  - "AT"   # Ambient Temperature (°C)
+  - "RF"   # Rainfall (mm)
+
+target_column: "PM2.5"
+aqi_target_column: "AQI_Category"
+
+aqi_bins: [-1, 30, 60, 90, 120, 250, 1000]
+aqi_labels: ["Good", "Satisfactory", "Moderate", "Poor", "Very Poor", "Severe"]
+
+model_training:
+  test_size: 0.2
+  random_state: 42
+  cv_folds: 5
+  models_to_train:
+    - "random_forest"
+    - "xgboost"
+    - "lightgbm"
+    - "ridge"
+
+api:
+  host: "127.0.0.1"
+  port: 8000
